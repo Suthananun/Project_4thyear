@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TotalToolCount Analysis | Dashboard</title>
+    <!-- Modern Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- ApexCharts for Premium Visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <div class="logo-text">
+                    <div class="logo-icon"></div>
+                    <span>TOOL ANALYTICS</span>
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-item active">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                    <span>Dashboard</span>
+                </a>
+                <a href="baht-per-piece.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    <span>Baht / Piece</span>
+                </a>
+                <a href="baht-per-count.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 20v-6M6 20V10M18 20V4"></path>
+                    </svg>
+                    <span>Baht / Count</span>
+                </a>
+            </nav>
+        </aside>
+
+        <div class="dashboard-container">
+            <!-- Header Section -->
+            <header class="dashboard-header">
+                <div class="header-content">
+                    <h1 class="glow-text">TotalToolCount Analysis</h1>
+                    <p class="subtitle">ACCUMULATED USAGE BY TOOL CATEGORY</p>
+                </div>
+
+                <div class="header-filters">
+                    <div class="filter-group">
+                        <label for="line-select">Line:</label>
+                        <select id="line-select" class="neon-input">
+                            <option value="L1">L1</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="machine-select">Machine:</label>
+                        <select id="machine-select" class="neon-input">
+                            <option value="M1">M1</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="tooltype-select">Tool Type:</label>
+                        <select id="tooltype-select" class="neon-input">
+                            <option value="TT1">TT1</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="year-select">Year:</label>
+                        <select id="year-select" class="neon-input">
+                            <option value="2026">2026</option>
+                            <option value="2025">2025</option>
+                            <option value="2024">2024</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="month-select">Month:</label>
+                        <select id="month-select" class="neon-input">
+                            <option value="3">March</option>
+                            <option value="2">February</option>
+                            <option value="1">January</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>&nbsp;</label>
+                        <button id="export-csv" class="neon-button">
+                            <svg class="excel-icon" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M14.5 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V7.5L14.5 2Z"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M14 2V8H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M8 13L12 17M12 13L8 17" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            <span>Export CSV</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <main class="dashboard-content">
+                <div class="chart-card glass-card">
+                    <div class="chart-header">
+                        <h2 class="card-title">Accumulated Tool Life Trend</h2>
+                        <div id="loading-indicator" class="loading hidden">Updating Data...</div>
+                    </div>
+                    <div id="usage-chart" class="chart-container"></div>
+                    <div class="chart-footer">
+                        <div class="status-indicator">
+                            <span class="indicator-dot pink-glow"></span>
+                            <span class="indicator-label">Current Usage</span>
+                        </div>
+                        <div class="status-indicator">
+                            <span class="indicator-dot red-glow"></span>
+                            <span class="indicator-label">Tool Life Limit</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-header" style="margin-top: 40px; margin-bottom: 20px;">
+                    <h2 class="card-title">Individual Tool Status</h2>
+                </div>
+                <div id="summary-section" class="summary-section">
+                    <!-- Tool detail blocks will be injected here dynamically -->
+                </div>
+
+                <div class="section-header" style="margin-top: 40px; margin-bottom: 20px;">
+                    <h2 class="card-title">Daily Tool Usage Table</h2>
+                </div>
+                <div id="usage-table-container" class="usage-table-section">
+                    <!-- Tables will be injected here dynamically -->
+                </div>
+            </main>
+        </div>
+
+        <!-- Background Decoration -->
+        <div class="bg-glow bg-glow-1"></div>
+        <div class="bg-glow bg-glow-2"></div>
+
+        <script src="js/app.js"></script>
+</body>
+
+</html>
