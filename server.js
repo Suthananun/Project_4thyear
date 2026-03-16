@@ -6,7 +6,7 @@ const { Pool } = require('pg');
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 // Database connection
 const pool = new Pool({
@@ -105,6 +105,13 @@ app.get('/api/tool-usage-report', async (req, res) => {
     }
 });
 
+// Import Routes
+const costEfficiencyRoutes = require('./routes/cost-efficiency');
+
+// Use Routes
+app.use('/api/cost-efficiency', costEfficiencyRoutes(pool));
+
+
 // API for filters
 app.get('/api/filters', async (req, res) => {
     try {
@@ -152,3 +159,4 @@ app.get('/api/filters', async (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 });
+

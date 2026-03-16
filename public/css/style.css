@@ -12,6 +12,68 @@
     --gradient-glow: linear-gradient(135deg, var(--neon-blue), var(--neon-green));
 }
 
+.nav-category {
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 20px 0 5px 20px;
+    opacity: 0.5;
+}
+
+.summary-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 25px;
+}
+
+.stat-icon-box {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+}
+
+.stat-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.stat-value-large {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+.cost-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.ranking-card {
+    height: 500px;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -30,6 +92,7 @@ body {
 .app-container {
     display: flex;
     min-height: 100vh;
+    width: 100%;
     position: relative;
     z-index: 10;
 }
@@ -109,8 +172,11 @@ body {
 
 .dashboard-container {
     flex: 1;
-    max-width: 1400px;
-    padding: 40px 60px;
+    width: 100%;
+    min-width: 0;
+    padding: 25px 30px;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Header Styles */
@@ -236,9 +302,10 @@ body {
 
 /* Main Content Area */
 .dashboard-content {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 30px;
+    width: 100%;
 }
 
 .chart-card {
@@ -644,4 +711,70 @@ th.change-day {
     .stat-value {
         font-size: 2.2rem;
     }
+}
+
+/* New Distribution List Styles */
+.summary-list {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 18px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.summary-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--neon-blue);
+    opacity: 0.5;
+}
+
+.summary-item:hover {
+    background: rgba(0, 210, 255, 0.08);
+    transform: translateX(8px);
+    border-color: rgba(0, 210, 255, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.summary-item:hover::before {
+    opacity: 1;
+    box-shadow: 0 0 10px var(--neon-blue);
+}
+
+.item-label {
+    font-weight: 800;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+}
+
+.item-value {
+    font-weight: 800;
+    color: var(--neon-cyan);
+    font-size: 1.1rem;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+}
+
+.summary-list div[style*="No data"] {
+    text-align: center;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    border: 1px dashed rgba(255, 255, 255, 0.1);
 }

@@ -1,0 +1,77 @@
+/* ==========================================================
+   VARIABLES — Design tokens shared across all components
+   ========================================================== */
+
+:root {
+    --bg-color: #0b0b0d;
+    --card-bg: rgba(20, 20, 22, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --neon-blue: #00d2ff;
+    --neon-green: #39ff14;
+    --neon-cyan: #00ffff;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0ab;
+    --font-main: 'Outfit', sans-serif;
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    --gradient-glow: linear-gradient(135deg, var(--neon-blue), var(--neon-green));
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-main);
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* App shell */
+.app-container {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+}
+
+/* Background glow decorations */
+.bg-glow {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    z-index: 1;
+    opacity: 0.15;
+    pointer-events: none;
+}
+
+.bg-glow-1 {
+    width: 500px;
+    height: 500px;
+    top: -100px;
+    right: -100px;
+    background: var(--neon-blue);
+}
+
+.bg-glow-2 {
+    width: 600px;
+    height: 600px;
+    bottom: -150px;
+    left: -150px;
+    background: var(--neon-green);
+}
+
+/* Utility: hidden */
+.hidden {
+    display: none;
+}
+
+/* Utility: neon text colours */
+.neon-blue-text  { color: var(--neon-blue);  text-shadow: 0 0 10px rgba(0,210,255,0.3); }
+.neon-green-text { color: var(--neon-green); text-shadow: 0 0 10px rgba(57,255,20,0.3); }
+.neon-cyan-text  { color: var(--neon-cyan);  text-shadow: 0 0 10px rgba(0,255,255,0.3); }

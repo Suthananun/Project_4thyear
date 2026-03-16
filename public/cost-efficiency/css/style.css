@@ -1,0 +1,11 @@
+/* ==========================================================
+   style.css — Main entry point for Cost Efficiency CSS
+   Import order matters: variables first, then layout, then components
+   ========================================================== */
+
+@import url('variables.css'); /* Design tokens, reset, body, utilities  */
+@import url('sidebar.css');   /* Sidebar navigation panel               */
+@import url('header.css');    /* Page header, filter bar, inputs         */
+@import url('cards.css');     /* Glass cards, stat cards, badges         */
+@import url('charts.css');    /* Chart grids, donut/bar chart containers */
+@import url('table.css');     /* Detailed Cost Log table + scroll fix    */

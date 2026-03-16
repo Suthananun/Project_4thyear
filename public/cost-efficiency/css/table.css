@@ -1,0 +1,162 @@
+/* ==========================================================
+   TABLE — Detailed Tool Cost Log table + scrollable container
+   ========================================================== */
+
+/* Generic table wrapper (horizontal scroll) */
+.usage-table-section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 20px;
+    padding-bottom: 50px;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    width: 100%;
+    padding-bottom: 10px;
+    border-radius: 16px;
+    -webkit-overflow-scrolling: touch;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.table-wrapper::-webkit-scrollbar { height: 8px; }
+.table-wrapper::-webkit-scrollbar-track  { background: rgba(255,255,255,0.05); border-radius: 10px; }
+.table-wrapper::-webkit-scrollbar-thumb  { background: rgba(0,210,255,0.3);    border-radius: 10px; }
+
+/* ---- Scrollable Details Table ---- */
+.details-table-wrapper {
+    max-height: 420px;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+.details-table-wrapper::-webkit-scrollbar         { width: 6px; height: 6px; }
+.details-table-wrapper::-webkit-scrollbar-track   { background: rgba(255,255,255,0.05); border-radius: 10px; }
+.details-table-wrapper::-webkit-scrollbar-thumb   { background: rgba(0,210,255,0.3);    border-radius: 10px; }
+.details-table-wrapper::-webkit-scrollbar-thumb:hover { background: rgba(0,210,255,0.6); }
+
+/* Sticky header — must use border-separate or the bg bleeds through */
+.details-table-wrapper .usage-table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.details-table-wrapper .usage-table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #141416; /* fully opaque — prevents row bleed-through */
+    box-shadow: 0 2px 0 rgba(0, 210, 255, 0.35), 0 3px 8px rgba(0, 0, 0, 0.8);
+    border-bottom: 1px solid rgba(0, 210, 255, 0.3);
+}
+
+/* ---- Base table styles ---- */
+.usage-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1200px;
+}
+
+.usage-table th,
+.usage-table td {
+    padding: 12px 10px;
+    text-align: center;
+    border: 1px solid var(--glass-border);
+    font-size: 0.85rem;
+    min-width: 45px;
+}
+
+/* Header row */
+.usage-table .header-row th {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+}
+
+/* Label cells (left-aligned row identifiers) */
+.label-cell,
+.usage-table .label-cell {
+    min-width: 120px !important;
+    text-align: left !important;
+    padding-left: 20px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    width: 150px;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* Tool ID header cell */
+.usage-table .tool-id-header {
+    background: rgba(0, 210, 255, 0.1);
+    color: var(--neon-cyan);
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-align: left;
+    padding: 12px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.table-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* Row colour coding */
+.usage-table .usage-row td       { color: var(--neon-green); font-weight: 600; }
+.usage-table .accumulated-row td { color: var(--neon-blue);  font-weight: 800; }
+.usage-table .limit-hit          { color: #ff3e3e !important; background: rgba(255,62,62,0.05); }
+.usage-table .dash-cell          { color: var(--text-secondary) !important; opacity: 0.5; }
+
+/* Run selector (tool-change day controls) */
+.run-selector-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.run-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+.run-selector {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-primary);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.run-selector:hover {
+    border-color: var(--neon-cyan);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.run-selector option {
+    background: #1a1a1a;
+    color: var(--text-primary);
+}
+
+/* Tool-change day highlight */
+.change-day {
+    background: rgba(255, 107, 0, 0.2) !important;
+    border-left: 2px solid var(--neon-orange) !important;
+    border-right: 2px solid var(--neon-orange) !important;
+}
+
+th.change-day {
+    color: var(--neon-orange) !important;
+    font-weight: 800;
+}

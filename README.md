@@ -33,14 +33,16 @@ DB_HOST=your_host
 DB_DATABASE=your_database
 DB_PASSWORD=your_password
 DB_PORT=5432
-PORT=3000
+PORT=3001
 ```
 
 ### 4. Run the Server
 ```bash
 npm start
 ```
-The dashboard will be available at `http://localhost:3000`.
+The dashboard will be available at `http://localhost:3001`.
 
 ---
 *Created for Final Project - 4th Year*
+
+## A

@@ -1,0 +1,78 @@
+/* ==========================================================
+   CHARTS — Donut charts, ranking bar charts, layout grids
+   ========================================================== */
+
+/* Cost distribution grid (3 donut charts) */
+.cost-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 20px;
+}
+
+/* Ranking section grid (2 bar charts side by side) */
+.dual-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.ranking-card {
+    height: auto;
+    min-height: 380px;
+}
+
+/* Donut chart containers — ensure ApexCharts renders centred */
+#line-donut-chart,
+#type-donut-chart,
+#machine-donut-chart {
+    min-height: 420px;
+    width: 100%;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Tool stats inside tool cards (tool-usage page reuse) */
+.summary-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.tool-card {
+    display: grid;
+    grid-template-columns: 1.5fr repeat(4, 1fr);
+    align-items: center;
+    gap: 15px;
+    padding: 20px 30px;
+}
+
+.tool-id-label {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--neon-blue);
+    letter-spacing: 1px;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: left;
+}
+
+.mini-stat-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.mini-stat-value {
+    font-size: 1.4rem;
+    font-weight: 700;
+}
